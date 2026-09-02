@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # DEV.NEXUS26
 
 Dev.Nexus26 is a full-stack AI tools directory and developer learning hub for **@dev.nexus26**. It combines searchable AI tools, courses, roadmaps, resources, articles, authentication, premium-content flags, feedback, uploads, and a protected admin workspace.
@@ -177,3 +178,5 @@ npm run build --prefix server
 ```
 
 Then start both dev servers and verify the home page, AI tools search/detail route, registration/login, dashboard guard, feedback form, API health check, and admin login.
+=======
+

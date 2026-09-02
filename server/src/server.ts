@@ -5,11 +5,11 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import { connectDB } from './config/database';
-import path from 'path';
 import authRoutes from './routes/authRoutes';
 import aiToolRoutes from './routes/aiToolRoutes';
 import postRoutes from './routes/postRoutes';
 import uploadRoutes from './routes/uploadRoutes';
+import fileRoutes from './routes/fileRoutes';
 import { courseRoutes, resourceRoutes, roadmapRoutes, feedbackRoutes, bookmarkRoutes, adminRoutes } from './routes/contentRoutes';
 import { notFound, errorHandler } from './middleware/errorMiddleware';
 
@@ -37,6 +37,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/ai-tools', aiToolRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/files', fileRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/resources', resourceRoutes);
 app.use('/api/roadmaps', roadmapRoutes);
@@ -44,9 +45,8 @@ app.use('/api/feedback', feedbackRoutes);
 app.use('/api/bookmarks', bookmarkRoutes);
 app.use('/api/admin', adminRoutes);
 
-// Static uploads folder
-const __dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+// Local uploads folder is intentionally disabled for permanent storage.
+// Files are stored in MongoDB GridFS and served through /api/files/:fileId.
 
 // Health Check Route
 app.get('/health', (req: Request, res: Response) => {

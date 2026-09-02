@@ -18,6 +18,16 @@ server/src/
   config/ controllers/ middleware/ models/ routes/ utils/ validators/
 ```
 
+## File storage
+
+The project stores uploaded asset binaries in MongoDB GridFS rather than in a local `uploads/` folder. All admin uploads are streamed directly to MongoDB via `GridFSBucket`, and the app exposes them through `/api/files/:fileId` and `/api/files/:fileId/download`.
+
+- Upload endpoint: `POST /api/files/upload` (admin only)
+- Preview endpoint: `GET /api/files/:fileId`
+- Download endpoint: `GET /api/files/:fileId/download`
+- Delete endpoint: `DELETE /api/files/:fileId` (admin only)
+- Metadata is stored in the app collection (`Resource`) with the matching `fileId` reference.
+
 ## Features
 
 - Public homepage, AI tools search/filter/detail pages, courses, resources, blog, roadmaps, and contact form

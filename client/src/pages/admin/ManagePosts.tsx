@@ -47,7 +47,7 @@ const ManagePosts = () => {
     fd.append('file', file);
     setUploading(true);
     try {
-      const res = await api.post('/upload', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+      const res = await api.post('/files/upload', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
       setForm((prev) => ({ ...prev, pdfAttachment: res.data.fileUrl }));
       setMessage('PDF uploaded successfully.');
     } catch (error) {

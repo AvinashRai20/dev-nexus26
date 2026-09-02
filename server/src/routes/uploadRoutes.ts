@@ -1,18 +1,10 @@
 import express from 'express';
-import { upload } from '../utils/upload';
+import { upload } from '../middleware/upload';
 import { protect, admin } from '../middleware/authMiddleware';
+import { uploadFile } from '../controllers/fileController';
 
 const router = express.Router();
 
-router.post('/', protect, admin, upload.single('file'), (req, res) => {
-  if (req.file) {
-    res.send({
-      message: 'File Uploaded',
-      fileUrl: `/${req.file.path.replace(/\\/g, '/')}`,
-    });
-  } else {
-    res.status(400).json({ message: 'No file uploaded' });
-  }
-});
+router.post('/', protect, admin, upload.single('file'), uploadFile);
 
 export default router;

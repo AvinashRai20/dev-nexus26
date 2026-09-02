@@ -1,0 +1,16 @@
+{
+  "name": "dev-nexus26",
+  "version": "1.0.0",
+  "description": "Dev.Nexus26 AI and developer learning platform",
+  "main": "index.js",
+  "scripts": {
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "build": "npm run build --prefix client && npm run build --prefix server",
+    "seed:admin": "npm run seed:admin --prefix server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
